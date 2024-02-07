@@ -1,6 +1,6 @@
 import torch
 from torch import Tensor
-from typing import Optional, Dict
+from typing import Optional
 
 from pocket2mol_rl.data.data import ProteinLigandData
 from pocket2mol_rl.data.transform.featurize import (
@@ -12,7 +12,7 @@ from pocket2mol_rl.data.transform.featurize import (
     NumValenceFeature,
 )
 
-from pocket2mol_rl.data.action import Action, AtomAction
+from pocket2mol_rl.data.action import AtomAction
 
 
 def append_to_tensor(tensor: Tensor, value: Tensor, dim=0):
@@ -29,9 +29,9 @@ def create_ligand_context_feature(element, feat_module: FeaturizeLigandAtom, dat
     start_idx = 0
     for feature in feat_module.feature_list:
         if isinstance(feature, ElementFeature):
-            feature_tensor[
-                start_idx : start_idx + feature.feature_dim
-            ] = feature.get_one_hot(element)
+            feature_tensor[start_idx : start_idx + feature.feature_dim] = (
+                feature.get_one_hot(element)
+            )
         elif isinstance(feature, IsMolFeature):
             feature_tensor[start_idx : start_idx + feature.feature_dim] = 1
         start_idx += feature.feature_dim

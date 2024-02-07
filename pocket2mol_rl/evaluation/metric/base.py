@@ -1,6 +1,6 @@
 from abc import ABCMeta, abstractclassmethod, abstractmethod, abstractproperty
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple, Union
+from typing import List, Optional
 
 from rdkit.Chem.rdchem import Mol as RdkitMol
 from tqdm import tqdm

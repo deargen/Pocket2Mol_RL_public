@@ -1,20 +1,17 @@
-from typing import List, Dict, Tuple, Any, Union, Optional
+from abc import ABCMeta
 from copy import deepcopy
+from typing import List
+
+import torch
+from rdkit.Chem import Mol as RdkitMol
+from torch import Tensor
 
 from pocket2mol_rl.data.action import (
     Action,
-    StopAction,
-    FocalStopAction,
-    AtomAction,
     ActionConditionalDistribution,
+    StopAction,
 )
 from pocket2mol_rl.data.add_atom import get_data_with_action_applied
-
-from torch import Tensor
-from rdkit.Chem import Mol as RdkitMol
-
-from abc import ABCMeta, abstractmethod
-import torch
 
 
 class Episode:

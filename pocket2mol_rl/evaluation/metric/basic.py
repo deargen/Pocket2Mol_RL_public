@@ -1,9 +1,10 @@
-from pocket2mol_rl.evaluation.metric.base import Metric
-
-from typing import List, Dict, Tuple, Union, Any, Optional
-from rdkit.Chem.rdchem import Mol as RdkitMol
-from rdkit.Chem.QED import qed
 from pathlib import Path
+from typing import Optional
+
+from rdkit.Chem.QED import qed
+from rdkit.Chem.rdchem import Mol as RdkitMol
+
+from pocket2mol_rl.evaluation.metric.base import Metric
 
 
 class MoleculeLength(Metric):

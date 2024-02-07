@@ -1,9 +1,11 @@
-from typing import Union, Optional, Any, Tuple, List, Dict
+import math
+from abc import ABCMeta, abstractmethod
+from dataclasses import dataclass
+from typing import Optional, Tuple
+
 import torch
 from torch import Tensor
-from dataclasses import dataclass
-from abc import ABCMeta, abstractmethod, abstractproperty, abstractclassmethod
-import math
+
 from pocket2mol_rl.utils.deterministic import assign_val_at_idx
 
 GAUSSIAN_COEF = 1.0 / math.sqrt(2 * math.pi)

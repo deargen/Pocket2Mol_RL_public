@@ -1,39 +1,29 @@
-from pocket2mol_rl.evaluation.metric.posebusters.modules.flatness import (
-    check_flatness,
-    CheckFlatnessException,
-)
+import pickle
+import random
+from argparse import ArgumentParser
+from copy import deepcopy
+from multiprocessing import Pool
+from pathlib import Path
+from typing import Dict, List, Optional
+
+import numpy as np
+from rdkit import Chem, DataStructs
+from rdkit.Chem import Crippen, Descriptors, Lipinski
+from rdkit.Chem.rdchem import Mol as RdkitMol
+from tqdm import tqdm
+
+from pocket2mol_rl.evaluation.metric.basic import QEDScore
 from pocket2mol_rl.evaluation.metric.posebusters.modules.distance_geometry import (
     check_geometry,
-    CheckGeometryException,
 )
-from pocket2mol_rl.evaluation.metric.basic import QEDScore
-
-from argparse import ArgumentParser
-from tqdm import tqdm
-from pathlib import Path
-from glob import glob
-from typing import List, Dict, Tuple, Optional
-import numpy as np
-import pickle
-
-from rdkit import Chem, DataStructs
-from rdkit.Chem.rdchem import Mol as RdkitMol
-from pocket2mol_rl.utils.silence import silence_rdkit
-
-import random
-
-from pocket2mol_rl.utils.batch_computation import group_compute_merge
+from pocket2mol_rl.evaluation.metric.posebusters.modules.flatness import (
+    check_flatness,
+)
 from pocket2mol_rl.evaluation.metric.sascorer import compute_sa_score
-from rdkit.Chem import AllChem, Crippen, Descriptors, Lipinski
-from copy import deepcopy
-
-from multiprocessing import Pool
-import multiprocessing as mp
-from math import ceil
-
-from pocket2mol_rl.utils.p2m_docking import P2MDockingTask
 from pocket2mol_rl.evaluation.metric.similarity import get_average_pairwise_similarity
-
+from pocket2mol_rl.utils.batch_computation import group_compute_merge
+from pocket2mol_rl.utils.p2m_docking import P2MDockingTask
+from pocket2mol_rl.utils.silence import silence_rdkit
 
 silence_rdkit()
 
@@ -517,11 +507,6 @@ def get_metrics(args):
             pickle.dump(d, f)
 
     return d
-
-
-def analyze(d: Dict[str, np.ndarray], args):
-    print(d["smiles"][:3])
-    # TODO: Fill in this
 
 
 if __name__ == "__main__":

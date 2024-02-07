@@ -1,12 +1,11 @@
-from typing import Any, Dict, List, Optional, Tuple, Union
+from typing import Any, List, Tuple
 
+import numpy as np
 import torch
 from torch import Tensor
 from torch_geometric.data import Batch
 from torch_geometric.nn import knn
-import numpy as np
 
-from pocket2mol_rl.data.data import ProteinLigandData
 from pocket2mol_rl.data.action import (
     Action,
     ActionConditionalDistribution,
@@ -18,13 +17,13 @@ from pocket2mol_rl.data.action import (
     PosDistribution,
     StopAction,
 )
+from pocket2mol_rl.data.data import ProteinLigandData
 from pocket2mol_rl.models.pretrained_maskfill import PretrainedMaskFillModel
 from pocket2mol_rl.utils.tensor import (
     added_concat,
     decompose_tensors,
     decompose_tensors_and_getindex,
 )
-from collections import defaultdict
 
 
 class ProbabilityMixIn(PretrainedMaskFillModel):

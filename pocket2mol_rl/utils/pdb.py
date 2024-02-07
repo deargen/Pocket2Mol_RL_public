@@ -1,7 +1,8 @@
-from Bio.PDB.PDBParser import PDBParser
-from typing import Union
 from pathlib import Path
+from typing import Union
+
 import numpy as np
+from Bio.PDB.PDBParser import PDBParser
 
 
 def get_center_of_pdb_file(pdb_file: Union[str, Path]):

@@ -1,11 +1,10 @@
-from pathlib import Path
+from dataclasses import dataclass
+from typing import Tuple
+
 import h5py
 import numpy as np
-from typing import Tuple, List, Dict, Any, Union
 
 from pocket2mol_rl.treemeans.data.tree import PlanarTree
-
-from dataclasses import dataclass
 
 
 class TreeReconsError(Exception):

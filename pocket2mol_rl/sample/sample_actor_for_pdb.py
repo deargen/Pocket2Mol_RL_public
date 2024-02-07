@@ -1,33 +1,22 @@
-import torch
+import os
+from argparse import ArgumentParser
+from glob import glob
+from pathlib import Path
+from typing import Optional
 
-from pocket2mol_rl.data.data import ProteinLigandData
+import torch
+from rdkit import Chem
+from tqdm import tqdm
 
 from pocket2mol_rl.rl.model.actor import MolgenActor
-
-from rdkit import Chem
-
-from argparse import ArgumentParser
-from math import ceil
-from tqdm import tqdm
-from pathlib import Path
-from glob import glob
-
-from typing import Optional, List, Union
+from pocket2mol_rl.sample.procedures import generate_exact_number
 from pocket2mol_rl.utils.data import (
     pdb_to_pocket_data_from_center,
     pdb_to_pocket_data_from_ref_span,
 )
-from pocket2mol_rl.utils.pdb import get_center_of_pdb_file
 from pocket2mol_rl.utils.mol import get_center_of_sdf_file
-
-from argparse import ArgumentParser
-
-from pocket2mol_rl.sample.procedures import generate_exact_number
-
-from pocket2mol_rl.utils.mol import RdkitMol
+from pocket2mol_rl.utils.pdb import get_center_of_pdb_file
 from pocket2mol_rl.utils.silence import silence_rdkit
-
-import os
 
 silence_rdkit()
 

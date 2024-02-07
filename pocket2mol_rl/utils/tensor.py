@@ -1,6 +1,7 @@
+from typing import List, Optional
+
 import torch
 import torch.nn.functional as F
-from typing import List, Optional
 
 
 def concat_with_padding(tensor1: torch.Tensor, tensor2: torch.Tensor):

@@ -76,9 +76,9 @@ class AtomComposer(object):
         data.compose_knn_edge_type = torch.zeros(
             len(data.compose_knn_edge_index[0]), dtype=torch.long
         )
-        data.compose_knn_edge_type[
-            idx_edge[idx_edge >= 0]
-        ] = data.ligand_context_bond_type[idx_edge >= 0]
+        data.compose_knn_edge_type[idx_edge[idx_edge >= 0]] = (
+            data.ligand_context_bond_type[idx_edge >= 0]
+        )
 
         # for decoder edge feature
         data.compose_knn_edge_feature = torch.cat(

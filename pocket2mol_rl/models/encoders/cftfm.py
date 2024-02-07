@@ -1,6 +1,5 @@
 import torch
 from torch.nn import LayerNorm, LeakyReLU, Module, ModuleList
-from pocket2mol_rl.utils.deterministic import scatter_sum
 
 from pocket2mol_rl.models.component.common import EdgeExpansion, GaussianSmearing
 from pocket2mol_rl.models.component.invariant import (
@@ -8,6 +7,7 @@ from pocket2mol_rl.models.component.invariant import (
     MessageModule,
     VNLeakyReLU,
 )
+from pocket2mol_rl.utils.deterministic import scatter_sum
 
 
 class CFTransformerEncoderVN(Module):

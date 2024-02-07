@@ -1,44 +1,31 @@
 import copy
-
-import numpy as np
-import torch
-
-# from torch_geometric.data import Data, DataLoader, Batch
-from torch_geometric.data import Batch, Data
-from torch_geometric.loader import DataLoader
-
-
 import warnings
+from abc import ABCMeta, abstractmethod
+from pathlib import Path
+from typing import List, Optional
 
+import torch
 from Bio import BiopythonWarning
-from Bio.PDB.PDBParser import PDBParser
 from Bio.PDB.PDBIO import PDBIO
+from Bio.PDB.PDBParser import PDBParser
 from Bio.PDB.Selection import unfold_entities
 from easydict import EasyDict
 from rdkit import Chem
-
-from pocket2mol_rl.data.protein_ligand import PDBProtein
-from pocket2mol_rl.data.data import ProteinLigandData
-from pathlib import Path
-
-from abc import ABCMeta, abstractmethod
-from pocket2mol_rl.utils.mol import parse_sdf
-from typing import Optional, List
-
-from pocket2mol_rl.data.transform.featurize import (
-    FeaturizeProteinAtom,
-    FeaturizeLigandAtom,
-)
-from pocket2mol_rl.data.transform import (
-    AtomComposer,
-    LigandMaskAll,
-    LigandMaskNone,
-    LigandCountNeighbors,
-)
 from torch_geometric.transforms import Compose
 
-
-from easydict import EasyDict
+from pocket2mol_rl.data.data import ProteinLigandData
+from pocket2mol_rl.data.protein_ligand import PDBProtein
+from pocket2mol_rl.data.transform import (
+    AtomComposer,
+    LigandCountNeighbors,
+    LigandMaskAll,
+    LigandMaskNone,
+)
+from pocket2mol_rl.data.transform.featurize import (
+    FeaturizeLigandAtom,
+    FeaturizeProteinAtom,
+)
+from pocket2mol_rl.utils.mol import parse_sdf
 
 DEFAULT_MODEL_CONFIG_FOR_FEATURIZER = EasyDict(
     {

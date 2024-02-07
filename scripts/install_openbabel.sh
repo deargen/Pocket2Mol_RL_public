@@ -15,7 +15,11 @@ make install
 
 # add to path
 echo 'export PATH=$PATH:~/Tools/openbabel-install/bin' >> ~/.bashrc
+source ~/.bashrc
 
 # clean up
 cd ../..
 rm -rf openbabel-3.1.1 openbabel-3.1.1-source.tar.bz2
+
+# Remove the /Tools/openbabel-install directory if you want to uninstall openbabel
+# and remove the PATH addition from ~/.bashrc

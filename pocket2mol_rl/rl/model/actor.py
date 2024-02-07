@@ -1,4 +1,6 @@
 import argparse
+from collections import defaultdict
+from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 import numpy as np
@@ -7,17 +9,12 @@ import torch.nn as nn
 from rdkit.Chem.rdchem import Mol as RdkitMol
 
 from pocket2mol_rl.data.action import (
-    Action,
     ActionConditionalDistribution,
     AtomAction,
     FocalStopAction,
     StopAction,
 )
-from pocket2mol_rl.data.add_atom import (
-    get_data_with_action_applied,
-    get_past_action,
-    get_past_data,
-)
+from pocket2mol_rl.data.add_atom import get_data_with_action_applied, get_past_data
 from pocket2mol_rl.data.data import ProteinLigandData
 from pocket2mol_rl.data.transform.composer import AtomComposer
 from pocket2mol_rl.data.transform.featurize import (
@@ -28,10 +25,8 @@ from pocket2mol_rl.models.maskfill import MaskFillModelVN
 from pocket2mol_rl.rl.component.episode import (
     Episode,
     FailedCompleteEpisode,
-    FailedEpisode,
     FailedIntermediateEpisode,
     SuccessfulEpisode,
-    PreEpisode,
 )
 from pocket2mol_rl.treemeans.data import PlanarTree
 from pocket2mol_rl.treemeans.data.transform.featurize import (
@@ -43,18 +38,11 @@ from pocket2mol_rl.treemeans.evaluation.data_structure import (
     TreeReconsError,
 )
 from pocket2mol_rl.treemeans.models.maskfill import ToyMaskFillModelVN
+from pocket2mol_rl.utils.batch_computation import group_compute_merge
 from pocket2mol_rl.utils.reconstruct import (
     MolReconsError,
     reconstruct_from_generated_with_edges,
 )
-from pocket2mol_rl.utils.batch_computation import group_compute_merge, iter_batches
-
-from tqdm import tqdm
-from rdkit.Chem import MolToSmiles
-
-from collections import defaultdict
-from math import sqrt
-from pathlib import Path
 
 
 class Actor:

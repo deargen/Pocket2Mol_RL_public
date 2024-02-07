@@ -34,6 +34,7 @@ We will provide the docker image in final version.
     Replace `pocket2mol_rl` with the name of your environment.
 
 3. Install Openbabel manually
+    This command installs the openbabel package for the user, independent of any Conda environment.
     Openbabel is a dependency to compute docking scores.
     Because the `openbabel` package is not available in the conda environment, you need to install it manually. 
     ```bash

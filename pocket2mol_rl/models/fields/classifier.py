@@ -2,11 +2,6 @@ from math import pi as PI
 
 import torch
 from torch.nn import LayerNorm, Module, Sequential
-from pocket2mol_rl.utils.deterministic import (
-    scatter_add,
-    scatter_softmax,
-    scatter_sum,
-)
 
 from pocket2mol_rl.models.component.common import EdgeExpansion, GaussianSmearing
 from pocket2mol_rl.models.component.invariant import (
@@ -14,6 +9,7 @@ from pocket2mol_rl.models.component.invariant import (
     GVPerceptronVN,
     MessageModule,
 )
+from pocket2mol_rl.utils.deterministic import scatter_add, scatter_softmax, scatter_sum
 
 
 class SpatialClassiferVNSkipEdge(Module):

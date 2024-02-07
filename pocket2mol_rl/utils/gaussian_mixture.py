@@ -1,9 +1,9 @@
+from math import pi, sqrt
+
 import torch
-from torch import Tensor
-import numpy as np
-from math import pi, log, sqrt
 from matplotlib import pyplot as plt
 from scipy.optimize import linear_sum_assignment as min_cost_matching
+from torch import Tensor
 
 GAUSSIAN_COEF = 1.0 / sqrt(2 * pi)
 

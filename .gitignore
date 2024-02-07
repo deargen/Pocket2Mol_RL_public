@@ -1,0 +1,5 @@
+test_*
+__pycache__/
+*.egg-info/
+checkpoints/
+.vscode/

@@ -1,42 +1,26 @@
-import torch
-from torch_geometric.data import Batch
+from math import ceil
+from pathlib import Path
+from typing import Any, List, Optional, Union
+
+from tqdm import tqdm
 
 from pocket2mol_rl.data.data import ProteinLigandData
-
-from pocket2mol_rl.rl.model.actor import (
-    MolgenActor,
-    Episode,
-    SuccessfulEpisode,
-    FailedEpisode,
-    FailedCompleteEpisode,
-    FailedIntermediateEpisode,
-)
-
-from math import ceil
-from tqdm import tqdm
-from pathlib import Path
-
-
-from typing import Any, Optional, List, Union
-
+from pocket2mol_rl.rl.model.actor import MolgenActor, SuccessfulEpisode
 from pocket2mol_rl.utils.mol import RdkitMol, write_sdf
-
 from pocket2mol_rl.utils.silence import silence_rdkit
 
 silence_rdkit()
 
+from abc import ABCMeta, abstractmethod
 from typing import Generator
 
-from abc import ABCMeta, abstractmethod
-
-from rdkit import Chem
-
-from scipy.spatial.distance import cdist
 import numpy as np
+from rdkit import Chem
+from scipy.spatial.distance import cdist
 
 from pocket2mol_rl.evaluation.quick_evaluate import (
-    _get_local_geometry_vals,
     _get_flatness_vals,
+    _get_local_geometry_vals,
 )
 
 

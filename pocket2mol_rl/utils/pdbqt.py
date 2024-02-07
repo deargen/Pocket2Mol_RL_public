@@ -1,12 +1,10 @@
-from pathlib import Path
-
-from rdkit import Chem
-import meeko
-from typing import Union
 import subprocess as sp
+from pathlib import Path
+from typing import Optional, Union
 
-from typing import Optional
+import meeko
 import torch
+from rdkit import Chem
 
 
 def parse_sdf(sdf_file: Path):

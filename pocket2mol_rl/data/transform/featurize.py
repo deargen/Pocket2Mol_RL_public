@@ -1,9 +1,10 @@
-from typing import List, Dict, Optional
+from typing import Dict, List
 
 import torch
 import torch.nn.functional as F
 
 from pocket2mol_rl.data.data import ProteinLigandData
+
 from .count_neighbors import LigandCountNeighbors
 
 
@@ -184,9 +185,9 @@ class FeaturizeLigandAtom(object):
             NumBondsFeature(),
         ]
         self.atomic_numbers: torch.Tensor = ElementFeature().atomic_numbers
-        self.max_possible_valences: Dict[
-            int, int
-        ] = ElementFeature().max_possible_valences
+        self.max_possible_valences: Dict[int, int] = (
+            ElementFeature().max_possible_valences
+        )
         self.atomic_number_to_idx = {
             self.atomic_numbers[i].item(): i for i in range(len(self.atomic_numbers))
         }
