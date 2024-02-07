@@ -2,7 +2,7 @@
 Public repository of the paper <Fine-tuning Pocket-conditioned 3D Molecule Generation via Reinforcment Learning>
 
 # License
-This work © 2024 by (redacted for blind peer review) is licensed under [CC BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1). 
+This work © 2024 by Deargen Inc. is licensed under [CC BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1). 
 Please keep the `LICENSE` file and the current section of `README.md` as they are. 
 
 Note that a provisional patent is under review, which potentially limits the patentability of related ideas. 
