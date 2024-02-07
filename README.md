@@ -57,7 +57,10 @@ We provide the inference data from all baseline models and the proposed model.
 ```
 bash scripts/download_data.sh
 ```
-FLAG(Fragment based model) failed to generate SDF file for 14, 77 target.
+Note that 
+- the outputs of the models "ar", "ligan", and "targetdiff" were derived from those of ![https://github.com/guanjq/targetdiff](https://github.com/guanjq/targetdiff)
+- the outputs of the model "pocket2mol" were produced using the code provided in ![https://github.com/pengxingang/Pocket2Mol](https://github.com/pengxingang/Pocket2Mol)
+- FLAG(Fragment based model) failed to generate SDF file for 14, 77 target.
 
 ## Sampling 
 
