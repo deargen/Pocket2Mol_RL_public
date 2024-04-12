@@ -13,10 +13,32 @@ Note that a provisional patent is under review, which potentially limits the pat
 We do not provide the code for training models.
 
 ## Environment Setup
-You can set up the environment using the Conda environment file `environment.yml` and install the package from the current repository.
-We will provide the docker image in final version.
+1. This guide outlines the steps to set up your environment using the Docker image `deargen/pocket2mol_rl_public:latest`. You can work with this environment either interactively in a terminal or within a development container in Visual Studio Code.
 
-### Setting Up Environment from Conda Environment File
+ 2. If you don't want to use Docker, you can set up the environment using the Conda environment file `environment.yml` and install the package from the current repository.
+
+ 3. Choose one of the following options to set up your environment and proceed to the finally section to install the current repository.
+
+ ### Option1) Using Docker Interactively
+ Open your terminal and execute the command below to start an interactive bash shell within the Docker container:
+
+ ```bash
+ docker run -it deargen/pocket2mol_rl_public:latest /bin/bash
+ ```
+
+ This will pull the `deargen/pocket2mol_rl_public:latest` image from DockerHub (if not already present locally) and open a bash shell in the container.
+
+ You have to logged in to the DockerHub to pull the image.
+
+ ### Option2) Using Visual Studio Code Dev Containers
+
+ To open a folder in a dev container using Visual Studio Code, ensure you have the Remote - Containers extension installed, then follow these steps:
+ - Press `Command` + `Shift` + `P` on macOS (`Ctrl` + `Shift` + `P` on Windows/Linux) to open the command palette.
+ - Type and select `Dev Container: Open Folder in Container`.
+ - Follow the prompts to select the folder you wish to open in the container.
+ - For more details, refer to the [Visual Studio Code documentation on dev containers](https://code.visualstudio.com/docs/devcontainers/containers#_quick-start-open-an-existing-folder-in-a-container).
+
+ ### Option3) Setting Up Environment from Conda Environment File
 1. **Create the Conda Environment:**
    Execute the following command to create the Conda environment:
 

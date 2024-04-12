@@ -1,0 +1,30 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+{
+	"name": "Cuda Anaconda",
+	"image": "deargen/pocket2mol_rl_public:latest",
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// "features": {
+	// },
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	"forwardPorts": [],
+	// Configure tool-specific properties.
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			// Add the IDs of extensions you want installed when the container is created.
+			"extensions": [
+				"ms-toolsai.jupyter",
+				"ms-python.python"
+			]
+		}
+	},
+	// connect to gpu by nvidia docker
+	"runArgs": [
+		"--gpus",
+		"all",
+		"--shm-size=43G",
+		"--name",
+		"${localEnv:USER}_public_devcontainer"
+	],
+	"mounts": []
+}
