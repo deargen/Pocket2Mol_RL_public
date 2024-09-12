@@ -1,5 +1,5 @@
 # Pocket2Mol_RL_public
-Public repository of the paper <Fine-tuning Pocket-conditioned 3D Molecule Generation via Reinforcment Learning>
+Public repository of the paper [<Fine-tuning Pocket-conditioned 3D Molecule Generation via Reinforcment Learning>](https://openreview.net/pdf?id=hlzRzr9ksu)
 
 # License
 This work © 2024 by Deargen Inc. is licensed under [CC BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1). 
